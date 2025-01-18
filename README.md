@@ -87,12 +87,27 @@ For more detailed setup instructions, see [Development Environment Setup](docs/s
 
 ```
 agritech/
-├── backend/          # FastAPI application
-├── frontend/         # React application
-├── docker/          # Docker configuration
-└── docs/            # Project documentation
+├── backend/                # FastAPI application
+│   ├── app/               # Application source code
+│   ├── .env.example       # Environment variables template
+│   ├── poetry.lock        # Poetry dependency lock file
+│   └── pyproject.toml     # Python project configuration
+├── frontend/              # React application
+│   └── src/              # React source code
+├── docker/               # Docker configuration files
+├── docs/                 # Project documentation
+│   ├── architecture/     # System architecture docs
+│   ├── guidelines/       # Development guidelines
+│   └── setup/           # Setup instructions
+└── .gitignore           # Git ignore rules
 ```
+
+Each directory serves a specific purpose:
+- `backend/`: Contains the FastAPI server implementation, database models, and API endpoints
+- `frontend/`: Houses the React-based user interface components and state management
+- `docker/`: Contains Docker configuration for development and production environments
+- `docs/`: Comprehensive project documentation including architecture, guidelines, and setup instructions
 
 ## License
 
-This project is maintained as a private repository.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
