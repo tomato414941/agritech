@@ -4,7 +4,7 @@
 
 Before reading this document, please familiarize yourself with:
 - [System Architecture](system_architecture.md)
-- [Development Setup](../setup/development_setup.md#database-setup)
+- [Development Environment Setup](../setup/development_environment_setup.md#database-setup)
 
 ## Related Documents
 - [API Design Guidelines](../guidelines/api_design.md)
@@ -19,7 +19,7 @@ Before reading this document, please familiarize yourself with:
 - TimescaleDB for time-series data (optional)
 
 For setup instructions, see:
-- [Development Setup: Database](../setup/development_setup.md#database-setup)
+- [Development Environment Setup: Database](../setup/development_environment_setup.md#database-setup)
 - [Security: Database](../guidelines/security.md#database-security)
 
 ### Schema Organization
@@ -378,7 +378,7 @@ For security measures, see:
 
 For migration guidelines, see:
 - [Data Migration Guide](../setup/data_migration.md)
-- [Development Setup: Migrations](../setup/development_setup.md#database-migrations)
+- [Development Environment Setup: Migrations](../setup/development_environment_setup.md#database-migrations)
 
 ### Testing
 - Migration testing

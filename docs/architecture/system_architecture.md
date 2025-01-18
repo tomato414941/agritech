@@ -4,7 +4,7 @@
 
 Before reading this document, please familiarize yourself with:
 - [Project Overview](../project_planning.md)
-- [Development Setup](../setup/development_setup.md)
+- [Development Environment Setup](../setup/development_environment_setup.md)
 - [Coding Standards](../guidelines/coding_standards.md)
 
 ## Related Documents
@@ -31,7 +31,7 @@ Before reading this document, please familiarize yourself with:
    - React Query (Data Fetching)
 
    For frontend setup and guidelines, see:
-   - [Development Setup: Frontend](../setup/development_setup.md#frontend-setup)
+   - [Development Environment Setup: Frontend](../setup/development_environment_setup.md#frontend-setup)
    - [Coding Standards: TypeScript](../guidelines/coding_standards.md#typescript-frontend)
 
 2. Backend (Service Layer)
@@ -41,7 +41,7 @@ Before reading this document, please familiarize yourself with:
    - JWT Authentication
 
    For backend setup and guidelines, see:
-   - [Development Setup: Backend](../setup/development_setup.md#backend-setup)
+   - [Development Environment Setup: Backend](../setup/development_environment_setup.md#backend-setup)
    - [Coding Standards: Python](../guidelines/coding_standards.md#python-backend)
    - [Database Schema](database_schema.md)
 

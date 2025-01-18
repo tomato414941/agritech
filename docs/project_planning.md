@@ -153,7 +153,7 @@ agritech/
 
 ### Related Documents
 - [System Architecture](architecture/system_architecture.md)
-- [Development Setup](setup/development_setup.md)
+- [Development Environment Setup](setup/development_environment_setup.md)
 - [API Design Guidelines](guidelines/api_design.md)
 - [Security Guidelines](guidelines/security.md)
 
@@ -172,9 +172,9 @@ agritech/
 - [API Design: Mobile](guidelines/api_design.md#mobile-api)
 
 ### Implementation Guidelines
-- [Development Setup: Frontend](setup/development_setup.md#frontend-setup)
+- [Development Environment Setup: Frontend](setup/development_environment_setup.md#frontend-setup)
 - [Coding Standards: TypeScript](guidelines/coding_standards.md#typescript-frontend)
-- [Development Setup: Backend](setup/development_setup.md#backend-setup)
+- [Development Environment Setup: Backend](setup/development_environment_setup.md#backend-setup)
 - [Database Schema](architecture/database_schema.md)
 - [API Design Guidelines](guidelines/api_design.md)
 

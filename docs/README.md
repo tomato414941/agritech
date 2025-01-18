@@ -36,7 +36,7 @@ AgriTech is a modern agricultural management platform that helps farmers optimiz
 - Infrastructure: Docker, Kubernetes
 
 ## Quick Start
-- [Development Setup](setup/development_setup.md)
+- [Development Environment Setup](setup/development_environment_setup.md)
 - [Deployment Guide](setup/deployment.md)
 - [API Documentation](guidelines/api_design.md)
 
@@ -54,7 +54,7 @@ AgriTech is a modern agricultural management platform that helps farmers optimiz
 - [`logging.md`](guidelines/logging.md): Logging standards and practices
 
 ### Setup `/setup`
-- [`development_setup.md`](setup/development_setup.md): Development environment setup guide
+- [`development_environment_setup.md`](setup/development_environment_setup.md): Development environment setup guide
 - [`deployment.md`](setup/deployment.md): Deployment procedures and configurations
 
 ### Architecture `/architecture`

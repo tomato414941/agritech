@@ -12,7 +12,7 @@ This document defines the naming conventions for the AgriTech project. Following
    - Use lowercase letters
    - Use underscores for spaces
    - Use `.md` extension
-   - Example: `naming_conventions.md`, `development_setup.md`
+   - Example: `naming_conventions.md`, `development_environment_setup.md`
 
 2. **Document Titles**
    - Use Title Case
