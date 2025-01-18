@@ -9,10 +9,11 @@
 - Git
 - Docker (optional, for containerized development)
 
-### Development Tools
-- Visual Studio Code (recommended)
-- PyCharm (alternative for Python development)
-- DBeaver (database management)
+### Related Documents
+- [System Architecture](../architecture/system_architecture.md)
+- [Database Schema](../architecture/database_schema.md)
+- [Security Guidelines](../guidelines/security.md)
+- [Git Strategy](../git_strategy.md)
 
 ## Backend Setup
 

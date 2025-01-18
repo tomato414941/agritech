@@ -148,3 +148,40 @@ agritech/
 - Implement proper error handling
 - Follow React best practices
 - Write component documentation
+
+## 8. Cross-References and Dependencies
+
+### Related Documents
+- [System Architecture](architecture/system_architecture.md)
+- [Development Setup](setup/development_setup.md)
+- [API Design Guidelines](guidelines/api_design.md)
+- [Security Guidelines](guidelines/security.md)
+
+### Technical Implementation Details
+- [System Architecture: Core Components](architecture/system_architecture.md#core-components)
+- [Database Schema](architecture/database_schema.md)
+- [Authentication Service](architecture/component_design.md#authentication-service)
+- [Field Management](architecture/component_design.md#field-management)
+- [Weather Service](architecture/component_design.md#weather-service)
+- [Crop Management](architecture/component_design.md#crop-management)
+- [Sensor Integration](architecture/component_design.md#sensor-integration)
+- [Analytics Service](architecture/component_design.md#analytics-service)
+
+### Technical Planning
+- [System Architecture: Future Considerations](architecture/system_architecture.md#future-considerations)
+- [API Design: Mobile](guidelines/api_design.md#mobile-api)
+
+### Implementation Guidelines
+- [Development Setup: Frontend](setup/development_setup.md#frontend-setup)
+- [Coding Standards: TypeScript](guidelines/coding_standards.md#typescript-frontend)
+- [Development Setup: Backend](setup/development_setup.md#backend-setup)
+- [Database Schema](architecture/database_schema.md)
+- [API Design Guidelines](guidelines/api_design.md)
+
+### Setup Instructions
+- [Deployment Guide](setup/deployment.md)
+- [Operations Guide](operations/README.md)
+
+### Documentation Standards
+- [Documentation Guidelines](guidelines/documentation.md)
+- [API Documentation](api/README.md)
