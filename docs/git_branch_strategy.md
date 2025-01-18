@@ -11,6 +11,8 @@
 
 ### `develop` Branch
 - Main development branch
+- Direct commits and merges allowed
+- Force pushes allowed for administrators
 - Base branch for feature development
 - Contains latest delivered development changes
 - Merged back to `main` through release branches
@@ -20,8 +22,12 @@
 ### Feature Branches (`feature/*`)
 - Branch from: `develop`
 - Merge back to: `develop`
-- Naming convention: `feature/[issue-id]-brief-description`
-- Example: `feature/123-user-authentication`
+- Naming convention: `feature/brief-description`
+  - Use kebab-case for the description
+  - Issue ID is optional: `feature/[issue-id-]brief-description`
+- Examples: 
+  - `feature/user-authentication`
+  - `feature/123-user-authentication`
 
 ### Release Branches (`release/*`)
 - Branch from: `develop`
@@ -48,9 +54,9 @@
 - No force pushes
 
 ### Develop Branch (`develop`)
-- Require pull request reviews
-- Require status checks to pass
-- Allow force pushes for administrators
+- Main development branch
+- Direct commits and merges allowed
+- Force pushes allowed for administrators
 
 ## Workflow
 

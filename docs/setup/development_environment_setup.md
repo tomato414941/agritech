@@ -13,7 +13,7 @@
 - [System Architecture](../architecture/system_architecture.md)
 - [Database Schema](../architecture/database_schema.md)
 - [Security Guidelines](../guidelines/security.md)
-- [Git Strategy](../git_strategy.md)
+- [Git Branch Strategy](../git_branch_strategy.md)
 
 ## Backend Setup
 

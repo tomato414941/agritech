@@ -15,7 +15,7 @@
    - [Japanese / 日本語](glossary/ja.md)
    - [Term Mapping](glossary/mapping.md)
 5. [Project Planning](project_planning.md)
-6. [Git Workflow](git_strategy.md)
+6. [Git Workflow](git_branch_strategy.md)
 7. [Changelog](CHANGELOG.md)
 
 ## Overview
@@ -44,7 +44,7 @@ AgriTech is a modern agricultural management platform that helps farmers optimiz
 
 ### Project Overview
 - [`project_planning.md`](project_planning.md): Project overview, technical stack, and MVP features
-- [`git_strategy.md`](git_strategy.md): Git workflow and branch management strategy
+- [`git_branch_strategy.md`](git_branch_strategy.md): Git workflow and branch management strategy
 
 ### Guidelines `/guidelines`
 - [`coding_standards.md`](guidelines/coding_standards.md): Coding conventions and best practices
