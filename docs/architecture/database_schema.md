@@ -1,11 +1,26 @@
 # Database Schema Design
 
+## Prerequisites
+
+Before reading this document, please familiarize yourself with:
+- [System Architecture](system_architecture.md)
+- [Development Setup](../setup/development_setup.md#database-setup)
+
+## Related Documents
+- [API Design Guidelines](../guidelines/api_design.md)
+- [Security Guidelines](../guidelines/security.md)
+- [Data Migration Guide](../setup/data_migration.md)
+
 ## Overview
 
 ### Database Type
 - PostgreSQL 15.x
 - PostGIS extension for spatial data
 - TimescaleDB for time-series data (optional)
+
+For setup instructions, see:
+- [Development Setup: Database](../setup/development_setup.md#database-setup)
+- [Security: Database](../guidelines/security.md#database-security)
 
 ### Schema Organization
 ```
@@ -125,6 +140,10 @@ CREATE TABLE users (
 CREATE INDEX idx_users_email ON users(email);
 ```
 
+Related components:
+- [Authentication Service](component_design.md#authentication-service)
+- [Security Guidelines: User Management](../guidelines/security.md#user-management)
+
 ### Fields Table
 ```sql
 CREATE TABLE fields (
@@ -143,6 +162,10 @@ CREATE TABLE fields (
 CREATE INDEX idx_fields_user_id ON fields(user_id);
 CREATE INDEX idx_fields_boundary USING GIST(boundary);
 ```
+
+Related components:
+- [Field Management Service](component_design.md#field-management)
+- [API Design: Field Endpoints](../guidelines/api_design.md#field-endpoints)
 
 ### Crops Table
 ```sql
@@ -163,6 +186,10 @@ CREATE TABLE crops (
 CREATE INDEX idx_crops_field_id ON crops(field_id);
 CREATE INDEX idx_crops_status ON crops(status);
 ```
+
+Related components:
+- [Crop Management Service](component_design.md#crop-management)
+- [API Design: Crop Endpoints](../guidelines/api_design.md#crop-endpoints)
 
 ### Crop Activities Table
 ```sql
@@ -321,3 +348,43 @@ CREATE INDEX idx_weather_field_date ON weather_data(field_id, recorded_at);
 - Index usage
 - Table statistics
 - Resource utilization
+
+## Security
+
+### Access Control
+- Row-level security policies
+- User role management
+- Audit logging
+
+Implementation details in:
+- [Security: Database Access](../guidelines/security.md#database-access)
+- [API Design: Authorization](../guidelines/api_design.md#authorization)
+
+### Data Protection
+- Encryption at rest
+- Secure connections
+- Backup strategy
+
+For security measures, see:
+- [Security: Data Protection](../guidelines/security.md#data-protection)
+- [Operations: Backup](../operations/backup.md)
+
+## Migration Strategy
+
+### Version Control
+- Sequential migration files
+- Forward and rollback support
+- Data consistency checks
+
+For migration guidelines, see:
+- [Data Migration Guide](../setup/data_migration.md)
+- [Development Setup: Migrations](../setup/development_setup.md#database-migrations)
+
+### Testing
+- Migration testing
+- Data integrity checks
+- Performance validation
+
+For testing procedures, see:
+- [Testing Guidelines: Database](../guidelines/testing.md#database-testing)
+- [Operations: Database Testing](../operations/testing.md#database)

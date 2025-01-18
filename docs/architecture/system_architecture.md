@@ -1,5 +1,18 @@
 # System Architecture
 
+## Prerequisites
+
+Before reading this document, please familiarize yourself with:
+- [Project Overview](../project_planning.md)
+- [Development Setup](../setup/development_setup.md)
+- [Coding Standards](../guidelines/coding_standards.md)
+
+## Related Documents
+- [Database Schema](database_schema.md)
+- [Component Design](component_design.md)
+- [API Design Guidelines](../guidelines/api_design.md)
+- [Security Guidelines](../guidelines/security.md)
+
 ## System Overview
 
 ### High-Level Architecture
@@ -17,16 +30,29 @@
    - Zustand (State Management)
    - React Query (Data Fetching)
 
+   For frontend setup and guidelines, see:
+   - [Development Setup: Frontend](../setup/development_setup.md#frontend-setup)
+   - [Coding Standards: TypeScript](../guidelines/coding_standards.md#typescript-frontend)
+
 2. Backend (Service Layer)
    - FastAPI Framework
    - SQLAlchemy ORM
    - Pydantic Models
    - JWT Authentication
 
+   For backend setup and guidelines, see:
+   - [Development Setup: Backend](../setup/development_setup.md#backend-setup)
+   - [Coding Standards: Python](../guidelines/coding_standards.md#python-backend)
+   - [Database Schema](database_schema.md)
+
 3. Database (Storage Layer)
    - PostgreSQL
    - PostGIS Extensions
    - Connection Pooling
+
+   For database setup and guidelines, see:
+   - [Database Schema](database_schema.md)
+   - [Security Guidelines](../guidelines/security.md)
 
 ## Detailed Architecture
 
@@ -50,6 +76,8 @@
 │ - Map Service   │ - useWeather    │    │
 └─────────────────┴─────────────────┴────┘
 ```
+
+See [Component Design](component_design.md) for detailed component interactions.
 
 ### Backend Architecture
 ```
@@ -85,6 +113,10 @@ sequenceDiagram
     API-->>-Client: Return Token
 ```
 
+For implementation details, see:
+- [Security Guidelines](../guidelines/security.md)
+- [API Design: Authentication](../guidelines/api_design.md#authentication)
+
 ### Data Flow
 ```mermaid
 sequenceDiagram
@@ -97,6 +129,10 @@ sequenceDiagram
     Service-->>-API: Process Response
     API-->>-Client: Return Response
 ```
+
+For more details, see:
+- [API Design: Endpoints](../guidelines/api_design.md#endpoints)
+- [Database Schema: Fields](database_schema.md#fields-table)
 
 ## Technical Stack Details
 
