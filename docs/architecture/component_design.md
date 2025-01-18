@@ -9,15 +9,24 @@
 // AppLayout.tsx
 interface AppLayoutProps {
     children: React.ReactNode;
+    sidebarCollapsed?: boolean;
 }
 
-const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+const AppLayout: React.FC<AppLayoutProps> = ({ 
+    children, 
+    sidebarCollapsed = false 
+}) => {
     return (
-        <Box>
-            <Header />
-            <Sidebar />
-            <main>{children}</main>
-            <Footer />
+        <Box className="app-layout">
+            <Header className="app-header" />
+            <Sidebar 
+                className="app-sidebar"
+                collapsed={sidebarCollapsed} 
+            />
+            <main className="app-main">
+                {children}
+            </main>
+            <Footer className="app-footer" />
         </Box>
     );
 };
@@ -30,20 +39,52 @@ interface NavItem {
     label: string;
     icon: IconType;
     path: string;
+    children?: NavItem[];
 }
 
 const Sidebar: React.FC = () => {
     const navItems: NavItem[] = [
-        { label: 'Dashboard', icon: FiHome, path: '/' },
-        { label: 'Fields', icon: FiMap, path: '/fields' },
-        { label: 'Crops', icon: FiGrid, path: '/crops' },
-        { label: 'Reports', icon: FiBarChart2, path: '/reports' }
+        { 
+            label: 'Dashboard', 
+            icon: FiHome, 
+            path: '/' 
+        },
+        { 
+            label: 'Fields', 
+            icon: FiMap, 
+            path: '/fields',
+            children: [
+                { 
+                    label: 'Map View', 
+                    icon: FiMap, 
+                    path: '/fields/map' 
+                },
+                { 
+                    label: 'List View', 
+                    icon: FiList, 
+                    path: '/fields/list' 
+                }
+            ]
+        },
+        { 
+            label: 'Crops', 
+            icon: FiGrid, 
+            path: '/crops' 
+        },
+        { 
+            label: 'Reports', 
+            icon: FiBarChart2, 
+            path: '/reports' 
+        }
     ];
 
     return (
-        <VStack>
+        <VStack spacing={2} align="stretch">
             {navItems.map(item => (
-                <NavItem key={item.path} {...item} />
+                <NavItem 
+                    key={item.path} 
+                    {...item} 
+                />
             ))}
         </VStack>
     );
@@ -58,14 +99,52 @@ const Sidebar: React.FC = () => {
 interface FieldMapProps {
     fieldId: string;
     onBoundaryChange?: (boundary: GeoJSON.Polygon) => void;
+    readOnly?: boolean;
 }
 
-const FieldMap: React.FC<FieldMapProps> = ({ fieldId, onBoundaryChange }) => {
+const FieldMap: React.FC<FieldMapProps> = ({ 
+    fieldId, 
+    onBoundaryChange,
+    readOnly = false 
+}) => {
+    const [field, setField] = useState<Field | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const loadField = async () => {
+            try {
+                const data = await fetchField(fieldId);
+                setField(data);
+            } catch (error) {
+                console.error('Failed to load field:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadField();
+    }, [fieldId]);
+
     return (
         <MapContainer>
-            <FieldBoundary fieldId={fieldId} />
-            <FieldMarkers fieldId={fieldId} />
-            {onBoundaryChange && <BoundaryEditor onChange={onBoundaryChange} />}
+            {loading ? (
+                <LoadingSpinner />
+            ) : (
+                <>
+                    <FieldBoundary 
+                        boundary={field?.boundary} 
+                        editable={!readOnly}
+                    />
+                    <FieldMarkers 
+                        markers={field?.markers} 
+                    />
+                    {!readOnly && onBoundaryChange && (
+                        <BoundaryEditor 
+                            onChange={onBoundaryChange} 
+                        />
+                    )}
+                </>
+            )}
         </MapContainer>
     );
 };
@@ -76,14 +155,33 @@ const FieldMap: React.FC<FieldMapProps> = ({ fieldId, onBoundaryChange }) => {
 // CropPlanner.tsx
 interface CropPlannerProps {
     fieldId: string;
+    year: number;
 }
 
-const CropPlanner: React.FC<CropPlannerProps> = ({ fieldId }) => {
+const CropPlanner: React.FC<CropPlannerProps> = ({ fieldId, year }) => {
+    const [crops, setCrops] = useState<Crop[]>([]);
+    const [schedule, setSchedule] = useState<CropSchedule[]>([]);
+
+    const validateCropRotation = (newCrop: Crop): boolean => {
+        const previousCrop = crops[crops.length - 1];
+        return isValidRotation(previousCrop, newCrop);
+    };
+
     return (
-        <Box>
-            <CropCalendar fieldId={fieldId} />
-            <CropList fieldId={fieldId} />
-            <AddCropForm fieldId={fieldId} />
+        <Box className="crop-planner">
+            <CropCalendar 
+                schedule={schedule}
+                onScheduleChange={setSchedule}
+            />
+            <CropList 
+                crops={crops}
+                onCropSelect={handleCropSelect}
+            />
+            <AddCropForm 
+                fieldId={fieldId}
+                onValidate={validateCropRotation}
+                onSubmit={handleAddCrop}
+            />
         </Box>
     );
 };
@@ -97,16 +195,60 @@ const CropPlanner: React.FC<CropPlannerProps> = ({ fieldId }) => {
 interface WeatherChartProps {
     fieldId: string;
     dateRange: DateRange;
+    metrics: string[];  // e.g., ['temperature', 'rainfall']
 }
 
-const WeatherChart: React.FC<WeatherChartProps> = ({ fieldId, dateRange }) => {
+const WeatherChart: React.FC<WeatherChartProps> = ({ 
+    fieldId, 
+    dateRange,
+    metrics 
+}) => {
+    const [data, setData] = useState<WeatherData[]>([]);
+
+    useEffect(() => {
+        const fetchWeatherData = async () => {
+            const weatherData = await getFieldWeather(
+                fieldId,
+                dateRange.start,
+                dateRange.end
+            );
+            setData(weatherData);
+        };
+
+        fetchWeatherData();
+    }, [fieldId, dateRange]);
+
     return (
-        <LineChart>
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Line dataKey="temperature" stroke="#8884d8" />
-            <Line dataKey="rainfall" stroke="#82ca9d" />
-        </LineChart>
+        <Box className="weather-chart">
+            <LineChart data={data}>
+                <XAxis 
+                    dataKey="date" 
+                    type="time" 
+                />
+                <YAxis yAxisId="temp" />
+                <YAxis yAxisId="rain" orientation="right" />
+                {metrics.includes('temperature') && (
+                    <Line 
+                        dataKey="temperature" 
+                        stroke="#8884d8"
+                        yAxisId="temp"
+                    />
+                )}
+                {metrics.includes('rainfall') && (
+                    <Line 
+                        dataKey="rainfall" 
+                        stroke="#82ca9d"
+                        yAxisId="rain"
+                    />
+                )}
+                <Tooltip />
+                <Legend />
+            </LineChart>
+            <DateRangeSelector 
+                range={dateRange}
+                onChange={handleDateRangeChange}
+            />
+        </Box>
     );
 };
 ```
@@ -118,17 +260,27 @@ const WeatherChart: React.FC<WeatherChartProps> = ({ fieldId, dateRange }) => {
 #### Authentication Service
 ```python
 class AuthService:
-    async def authenticate_user(self, email: str, password: str) -> User:
+    async def authenticate_user(
+        self, 
+        email: str, 
+        password: str
+    ) -> User:
         user = await self.user_repository.get_by_email(email)
         if not user or not verify_password(password, user.password_hash):
             raise InvalidCredentialsError()
         return user
 
-    async def create_access_token(self, user: User) -> str:
+    async def create_access_token(
+        self, 
+        user: User,
+        expires_delta: Optional[timedelta] = None
+    ) -> str:
         data = {
             "sub": str(user.id),
             "email": user.email,
-            "exp": datetime.utcnow() + timedelta(minutes=30)
+            "exp": datetime.utcnow() + (
+                expires_delta or timedelta(minutes=30)
+            )
         }
         return jwt.encode(data, settings.jwt_secret_key, algorithm="HS256")
 ```
@@ -136,7 +288,11 @@ class AuthService:
 #### Field Service
 ```python
 class FieldService:
-    async def create_field(self, user_id: UUID, field_data: FieldCreate) -> Field:
+    async def create_field(
+        self, 
+        user_id: UUID, 
+        field_data: FieldCreate
+    ) -> Field:
         field = Field(
             user_id=user_id,
             name=field_data.name,
@@ -145,7 +301,10 @@ class FieldService:
         )
         return await self.field_repository.create(field)
 
-    async def get_field_details(self, field_id: UUID) -> FieldDetails:
+    async def get_field_details(
+        self, 
+        field_id: UUID
+    ) -> FieldDetails:
         field = await self.field_repository.get_by_id(field_id)
         crops = await self.crop_repository.get_by_field_id(field_id)
         soil_data = await self.soil_repository.get_latest(field_id)
@@ -308,4 +467,3 @@ const ErrorBoundary: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         </ErrorBoundary>
     );
 };
-```
