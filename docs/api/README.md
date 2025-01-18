@@ -6,7 +6,7 @@ Welcome to the AgriTech API documentation. This directory contains all the resou
 ## Directory Structure
 
 ### Core Documentation
-- [Architecture Overview](ARCHITECTURE.md) - System architecture and design principles
+- [Architecture Overview](architecture.md) - System architecture and design principles
 - [Getting Started](getting_started.md) - Quick start guide for new developers
 - [API Changelog](changelog.md) - History of API changes
 - [Deprecation Schedule](deprecation.md) - Upcoming deprecations and migrations
@@ -58,7 +58,7 @@ Detailed documentation for each API endpoint:
 
 ## Quick Start
 
-1. Review the [Architecture Overview](ARCHITECTURE.md) to understand the system
+1. Review the [Architecture Overview](architecture.md) to understand the system
 2. Follow the [Getting Started](getting_started.md) guide to set up your environment
 3. Explore the API reference documentation for your needed endpoints
 4. Use the provided [Postman Collection](postman/agritech_api_collection.json) to test the APIs
