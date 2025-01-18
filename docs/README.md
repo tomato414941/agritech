@@ -17,7 +17,7 @@
 5. [Project Planning](project_planning.md)
 6. [MVP Plan](mvp_plan.md)
 7. [Git Workflow](git_branch_strategy.md)
-8. [Changelog](CHANGELOG.md)
+8. [Changelog](changelog.md)
 
 ## Overview
 
@@ -97,7 +97,7 @@ AgriTech is a modern agricultural management platform that helps farmers optimiz
 - Compatible with AgriTech version: 1.0.0
 
 ### Change Log
-See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
+See [changelog.md](changelog.md) for detailed version history.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

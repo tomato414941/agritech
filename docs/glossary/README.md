@@ -25,7 +25,7 @@ This directory contains the multilingual glossary for the AgriTech project. Engl
    - Create an issue for term additions or modifications
 
 3. Version Control
-   - Major terminology changes should be documented in CHANGELOG.md
+   - Major terminology changes should be documented in changelog.md
    - Each term should maintain consistent meaning across all languages
 
 ## Contributing
