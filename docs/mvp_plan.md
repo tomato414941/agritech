@@ -2,170 +2,71 @@
 
 ## Overview
 
-The Minimum Viable Product (MVP) will focus on essential agricultural management features that provide immediate value to farmers and farm managers.
+The AgriTech MVP focuses on two core concepts: crop reference data and actual cultivation records.
+We will start with simple features and evolve gradually based on user feedback.
 
-## Core Features
+## Related Documents
+- [System Architecture](architecture/system_architecture.md)
+- [Database Schema](architecture/database_schema.md)
 
-### 1. Field Management
-- [ ] Field registration (create, read, update, delete)
-- [ ] Basic field information
-  - [ ] GPS coordinates
-  - [ ] Area size
-  - [ ] Soil type
-  - [ ] Field status
-- [ ] Field visualization (simple map view)
+## Core Concepts
 
-### 2. Crop Management
-- [ ] Crop planning
-  - [ ] Planting schedule
-  - [ ] Crop type selection
-  - [ ] Area allocation
-- [ ] Growth tracking
-  - [ ] Growth stage recording
-  - [ ] Basic condition monitoring
-- [ ] Harvest recording
-  - [ ] Harvest date
-  - [ ] Yield data
-  - [ ] Quality metrics
+### 1. Crop
+Reference data defining general characteristics and cultivation requirements for agricultural crops
 
-### 3. Task Management
-- [ ] Task operations
-  - [ ] Create tasks
-  - [ ] Assign tasks
-  - [ ] Update task status
-  - [ ] Complete tasks
-- [ ] Basic scheduling
-  - [ ] Due dates
-  - [ ] Priority levels
-- [ ] Task categorization
-  - [ ] Task types
-  - [ ] Related field/crop
+- Basic Information
+  - Crop Name
+  - Category (Fruit Vegetables, Leafy Vegetables, etc.)
+  - Standard Growth Period
+  - Optimal Growing Season
 
-### 4. User Management
-- [ ] Authentication
-  - [ ] User registration
-  - [ ] Login/logout
-  - [ ] Password management
-- [ ] Authorization
-  - [ ] Basic role management (admin/user)
-  - [ ] Permission controls
-- [ ] User profiles
-  - [ ] Basic user information
-  - [ ] Role assignment
+### 2. Cultivation
+Records of actual cultivation activities
 
-## Technical Implementation
+- Basic Information
+  - Crop Selection
+  - Start Date
+  - Optional Name (e.g., "Spring Tomatoes")
+  - Status (Active, Completed, Abandoned)
 
-### 1. Backend Development
-- [ ] Project setup
-  - [ ] Development environment
-  - [ ] Database setup
-  - [ ] API framework configuration
-- [ ] Database design
-  - [ ] Entity relationships
-  - [ ] Schema definition
-  - [ ] Migration system
-- [ ] API implementation
-  - [ ] RESTful endpoints
-  - [ ] Data validation
-  - [ ] Error handling
+## MVP Features
 
-### 2. Frontend Development
-- [ ] Project setup
-  - [ ] Framework setup
-  - [ ] Build system
-  - [ ] Development environment
-- [ ] Core components
-  - [ ] Authentication views
-  - [ ] Field management interface
-  - [ ] Crop management interface
-  - [ ] Task management interface
-- [ ] Shared components
-  - [ ] Navigation
-  - [ ] Forms
-  - [ ] Lists
-  - [ ] Maps
+### 1. Crop Selection
+- Selection from Crop Master Data
+- Display Basic Information
+- Start Cultivation Function
 
-### 3. Infrastructure
-- [ ] Development environment
-  - [ ] Docker configuration
-  - [ ] Local development setup
-- [ ] Database
-  - [ ] Database server setup
-  - [ ] Backup system
-- [ ] Authentication system
-  - [ ] JWT implementation
-  - [ ] Session management
+### 2. Cultivation Management
+- List of Active Cultivations
+- Days Elapsed Display
+- Status Management
+- Reference Information Access
 
-## Development Phases
+### 3. LLM Support
+- Detailed Crop Information
+- Timely Advice
+- Basic Question Handling
 
-### Phase 1: Foundation
-1. Project setup and infrastructure
-2. Basic user authentication
-3. Field management API and interface
-4. Initial deployment setup
+## Development Approach
 
-### Phase 2: Core Features
-1. Crop management implementation
-2. Task management system
-3. Basic reporting functionality
-4. User feedback integration
+1. Initial Implementation with Minimal Features
+2. User Feedback Collection
+3. Gradual Feature Enhancement
+4. Continuous Usability Improvement
 
-### Phase 3: Enhancement
-1. Map integration
-2. Data import/export
-3. Basic analytics
-4. Documentation
+## Mobile Strategy
 
-## Post-MVP Features
+### Phase 1: Responsive Web Application
+- Develop as a responsive web application
+- Ensure mobile-friendly UI/UX
+- Test across different devices
 
-Features to be considered for future releases:
-1. Weather data integration
-2. Sensor data integration
-3. Advanced analytics
-4. Mobile application
-5. Offline support
-6. External system integration
-7. Advanced reporting
-8. Notification system
+### Phase 2: PWA Implementation
+- Add Service Workers
+- Implement offline support
+- Enable installation capability
 
-## Success Metrics
-
-### User Engagement
-- Daily active users
-- Task completion rate
-- Field registration count
-
-### System Performance
-- API response times
-- System uptime
-- Error rates
-
-### Business Metrics
-- User registration rate
-- Feature usage statistics
-- User feedback scores
-
-## Timeline
-
-### Week 1-2: Foundation
-- Project setup
-- Basic authentication
-- Field management
-
-### Week 3-4: Core Features
-- Crop management
-- Task management
-- Basic UI
-
-### Week 5-6: Enhancement
-- Testing
-- Bug fixes
-- Documentation
-- Deployment
-
-## Next Steps
-
-1. [ ] Finalize technology stack
-2. [ ] Set up development environment
-3. [ ] Begin Phase 1 implementation
-4. [ ] Schedule regular progress reviews
+### Phase 3: Native Features (Based on User Feedback)
+- Consider React Native migration
+- Or adopt Capacitor/Cordova
+- Optimize for platform-specific features
