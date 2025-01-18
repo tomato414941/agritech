@@ -1,5 +1,23 @@
 # AgriTech Documentation
 
+## Table of Contents
+1. [Overview](#overview)
+   - [Key Features](#key-features)
+   - [Technology Stack](#technology-stack)
+2. [Quick Start](#quick-start)
+3. [Documentation Structure](#documentation-structure)
+   - [Setup Guides](setup/)
+   - [Architecture](architecture/)
+   - [Development Guidelines](guidelines/)
+   - [Operations Manual](operations/)
+4. [Glossary](glossary/)
+   - [English (Base)](glossary/en.md)
+   - [Japanese / 日本語](glossary/ja.md)
+   - [Term Mapping](glossary/mapping.md)
+5. [Project Planning](project_planning.md)
+6. [Git Workflow](git_strategy.md)
+7. [Changelog](CHANGELOG.md)
+
 ## Overview
 
 AgriTech is a modern agricultural management platform that helps farmers optimize their crop production through data-driven insights and automated monitoring.
